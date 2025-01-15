@@ -1,0 +1,44 @@
+#include <iostream>
+using namespace std;
+
+class Node {
+public:
+    int data;   
+    Node* next;    
+    Node(int data) {
+        this->data = data;
+        this->next = NULL;
+    }
+};
+void insertAtBeginning(Node*& head, Node*& tail, int data) {
+    Node* newNode = new Node(data);
+newNode->next = head;
+head = newNode;
+    if (tail == NULL) {
+        tail = newNode;
+    }
+}
+void printList(Node* head) {
+    Node* temp = head;
+    while (temp != NULL) {
+        cout << temp->data << " -> ";
+        temp = temp->next;
+    }
+    cout << "NULL" << endl;
+}
+int main() {
+    Node* head = NULL; 
+    Node* tail = NULL; 
+
+    insertAtBeginning(head, tail, 30);
+    insertAtBeginning(head, tail, 20);
+    insertAtBeginning(head, tail, 10);
+
+    cout << "Linked list after insertions: ";
+    printList(head);
+
+    return 0;
+}
+
+Output:-
+Linked list after insertions: 10 -> 20 -> 30 -> NULL
